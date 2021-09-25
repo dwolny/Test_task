@@ -1,7 +1,7 @@
 
-    <mat-drawer-container class="example-container" autosize>
+    <mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
         <mat-drawer #drawer class="example-sidenav" mode="side">
-          <p>Auto-resizing sidenav</p>
+          <app-vehicle-details [vehicle]="mapService.selectedVehicle" (closeSlideNav)="closeSlideNav()"></app-vehicle-details>
         </mat-drawer>
       
         <div class="example-sidenav-content">

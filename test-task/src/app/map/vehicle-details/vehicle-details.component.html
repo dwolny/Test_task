@@ -1,0 +1,69 @@
+<div class="vehicle-details">
+    <span class="vehicle-details__close" (click)="closeSlideNav.emit(null)">x</span>
+    <mat-list>
+        <mat-list-item class="vehicle-details__header"><mat-icon class="vehicle-details__header-icon">perm_identity</mat-icon> {{ 'details.driver.header' | translate }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <div class="vehicle-details-items">
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.driver.firstName' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.driver?.firstName }}
+                </div>
+            </div>
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.driver.lastName' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.driver?.lastName }}
+                </div>
+            </div>
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.driver.cardNumber' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.driver?.cardNumber }}
+                </div>
+            </div>
+        </div>
+        <mat-list-item><mat-icon class="vehicle-details__header-icon">motorcycle</mat-icon> {{ 'details.vehicle.header' | translate }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <div class="vehicle-details-items">
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.vehicle.id' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.id }}
+                </div>
+            </div>
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.vehicle.vin' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.vehicle?.vin }}
+                </div>
+            </div>
+            <div class="vehicle-details-items__item">
+                <div class="vehicle-details-items__header">
+                    {{ 'details.vehicle.avgFuel' | translate }}
+                </div>
+                <div class="vehicle-details-items__value">
+                    {{ vehicle?.vehicle?.avgFuel }}
+                </div>
+            </div>
+        </div>
+        <mat-list-item><mat-icon class="vehicle-details__header-icon">pan_tool</mat-icon> {{ 'details.tip.header' | translate }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <div class="vehicle-details-items">
+            <div class="vehicle-details-items__item vehicle-details-items__item--column">
+                <p>{{ 'tip.' + vehicle?.tip | translate:vehicle?.time}}</p>
+                <p class="vehicle-details-items__stop">{{ 'details.tip.nextPause' | translate:vehicle?.nextPause}}</p>
+            </div>
+        </div>
+      </mat-list>
+</div>

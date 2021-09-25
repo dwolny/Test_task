@@ -23,6 +23,8 @@ import { RouterModule } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSliderModule,
     MatExpansionModule,
     MatSidenavModule,
+    MatDividerModule,
+    MatListModule
   ],
   exports: [
     MatCheckboxModule,
@@ -75,6 +79,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSliderModule,
     MatExpansionModule,
     MatSidenavModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
 })

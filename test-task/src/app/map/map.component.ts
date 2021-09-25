@@ -24,7 +24,7 @@ export class MapComponent implements AfterViewInit {
   private lastId = '';
   private vehicleSearchSubscription!: Subscription;
   @ViewChild('drawer') drawer!: MatDrawer;
-  constructor(public appService: AppService, private mapService: MapService, private translateService: TranslateService) { }
+  constructor(public appService: AppService, public mapService: MapService, private translateService: TranslateService) { }
 
   ngAfterViewInit(): void {
     this.appService.pageName = 'map';
@@ -101,8 +101,8 @@ export class MapComponent implements AfterViewInit {
   createPopupDetails(vehicle: Vehicle, res: string): string {
       return `
       <div class="vehicle-popup">
-      <p class="vehicle-popup__item"><b>Imię: </b>${vehicle.firstName}</p>
-      <p class="vehicle-popup__item"><b>Nazwisko: </b>${vehicle.lastName}</p>
+      <p class="vehicle-popup__item"><b>Imię: </b>${vehicle.driver.firstName}</p>
+      <p class="vehicle-popup__item"><b>Nazwisko: </b>${vehicle.driver.lastName}</p>
       <p class="vehicle-popup__item"><b>Nr rejestracyjny: </b>${vehicle.id}</p>
       <hr />
       <a href="#" data-id="${vehicle.id}" class="get-details">${res}</a>
@@ -120,5 +120,9 @@ export class MapComponent implements AfterViewInit {
   testControl(id: string) {
     this.mapService.selectedVehicle = this.mapService.vehicles[id];
     this.drawer.toggle();
+  }
+
+  closeSlideNav(): void {
+    this.drawer.close();
   }
 }

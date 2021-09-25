@@ -53,26 +53,46 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             lat: 51.8276976,
             lang: 16.9560484,
             id: 'SK12345',
-            firstName: 'Jan',
-            lastName: 'Kowalski',
-            vin: 'VF123354543',
+            driver: {
+              firstName: 'Jan',
+              lastName: 'Kowalski',
+              cardNumber: 12343523
+            },
+            vehicle: {
+              vin: 'VF123354543',
+              avgFuel: 20
+            },
             tip: 0,
             time: {
               hours: 3,
               minutes: 38
+            },
+            nextPause: {
+              hours: 2,
+              minutes: 35
             }
           },
           'SK321321': {
             lat: 50.8276976,
             lang: 17.9560484,
             id: 'SK321321',
-            firstName: 'Waldemar',
-            lastName: 'Nowak',
-            vin: 'WO954391231',
-            tip: 2,
+            driver: {
+              firstName: 'Wojciech',
+              lastName: 'Nowak',
+              cardNumber: 523123
+            },
+            vehicle: {
+              vin: 'WOL9342832234',
+              avgFuel: 32
+            },
+            tip: 0,
             time: {
-              hours: 4,
-              stopTime: 9
+              hours: 0,
+              minutes: 22
+            },
+            nextPause: {
+              hours: 6,
+              minutes: 1
             }
           }
         }

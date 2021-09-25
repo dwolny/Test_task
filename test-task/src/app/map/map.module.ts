@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MapRoutingModule } from './map-routing.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -16,7 +17,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    MapComponent
+    MapComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     CommonModule,
