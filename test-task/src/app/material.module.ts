@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     MatSliderModule,
     MatExpansionModule,
+    MatSidenavModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -72,6 +74,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     MatSliderModule,
     MatExpansionModule,
+    MatSidenavModule,
   ],
   providers: [],
 })

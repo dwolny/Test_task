@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { circle, icon, latLng, Layer, marker, polygon, tileLayer } from 'leaflet';
 import { AppService } from '../services/app.service';
 
@@ -16,6 +17,8 @@ export class MapComponent implements AfterViewInit {
     zoom: 5,
     center: latLng(51.8276976, 16.9560484)
   };
+
+  @ViewChild('drawer') drawer!: MatDrawer;
   constructor(public appService: AppService) { }
 
   ngAfterViewInit(): void {
@@ -44,5 +47,6 @@ export class MapComponent implements AfterViewInit {
   
   testControl(id: string) {
     console.log(id);
+    this.drawer.toggle();
   }
 }
