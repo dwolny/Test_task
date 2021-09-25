@@ -8,6 +8,9 @@
         "settings": "Ustawienia",
         "map": "Mapy"
     },
+    "navbar": {
+        "search": "Wyszukaj pojazd"
+    },
     "map": {
         "header": "Mapa"
     }

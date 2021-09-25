@@ -8,6 +8,7 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class NavbarComponent implements OnInit {
 
+  searchInput = '';
   constructor(public appService: AppService) { }
 
   ngOnInit(): void {
