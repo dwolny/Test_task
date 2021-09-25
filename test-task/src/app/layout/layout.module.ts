@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { MaterialModule } from '../material.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -18,6 +19,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

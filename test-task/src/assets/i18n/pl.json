@@ -1,3 +1,14 @@
 {
-    "hello": "Hello, world!"
+    "menu": {
+        "notifications": "Alerty",
+        "files": "Pliki",
+        "drivers": "Kierowcy",
+        "vehicles": "Pojazdy",
+        "reports": "Raporty",
+        "settings": "Ustawienia",
+        "map": "Mapy"
+    },
+    "map": {
+        "header": "Mapa"
+    }
 }
