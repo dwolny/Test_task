@@ -159,7 +159,7 @@ export class MapComponent implements AfterViewInit {
    */
   createPopupDetails(vehicle: Vehicle, res: string): string {
       return `
-      <div class="vehicle-popup">
+      <div class="vehicle-popup get-details" data-id="${vehicle.id}">
       <p class="vehicle-popup__item"><b>Imię: </b>${vehicle.driver.firstName}</p>
       <p class="vehicle-popup__item"><b>Nazwisko: </b>${vehicle.driver.lastName}</p>
       <p class="vehicle-popup__item"><b>Nr rejestracyjny: </b>${vehicle.id}</p>
