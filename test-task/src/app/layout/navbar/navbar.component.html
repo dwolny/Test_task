@@ -3,8 +3,8 @@
     <div class="navbar__actions">
         <mat-form-field class="example-form-field" appearance="fill">
             <mat-label>{{ 'navbar.search' | translate }}</mat-label>
-            <input matInput type="text" [(ngModel)]="searchInput">
-            <button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
+            <input matInput type="text" (input)="search$.next($event)">
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="search$.next(null)">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>

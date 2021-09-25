@@ -28,16 +28,45 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       switch (true) {
         // case url.endsWith('/auth/login') && method === 'POST':
         //   return authenticate();
-        // case url.endsWith('/auth/refresh-token') && method === 'POST':
-        //   return refreshToken();
+        case url.endsWith('/config') && method === 'GET':
+          return getConfig();
+        case url.endsWith('/map') && method === 'GET':
+          return getMapData();
         default:
           // pass through any requests not handled above
           return next.handle(request);
       }
     }
 
-    function getDataForTable() {
-      return ok({ });
+    function getConfig() {
+      return ok({
+        lat: 51.8276976,
+        lang: 16.9560484,
+        zoom: 5
+      })
+    }
+
+    function getMapData() {
+      return ok({
+        data: {
+          'SK12345': {
+            lat: 51.8276976,
+            lang: 16.9560484,
+            id: 'SK12345',
+            firstName: 'Jan',
+            lastName: 'Kowalski',
+            vin: 'VF123354543',
+          },
+          'SK321321': {
+            lat: 50.8276976,
+            lang: 17.9560484,
+            id: 'SK321321',
+            firstName: 'Waldemar',
+            lastName: 'Nowak',
+            vin: 'WO954391231',
+          }
+        }
+      });
     }
 
     // helper functions

@@ -1,0 +1,1 @@
+export interface AppConfig { lat: number; lang: number; zoom: number; }
