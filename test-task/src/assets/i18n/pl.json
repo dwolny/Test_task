@@ -13,5 +13,30 @@
     },
     "map": {
         "header": "Mapa"
+    },
+    "tip": {
+        "0": "Kontynuuj jazdę przez kolejne {{hours}}h {{minutes}}min",
+        "1": "Zatrzymaj się za {{hours}}h na {{minutes}}min",
+        "2": "Zatrzymaj się za {{hours}}h na {{stopTime}}h",
+        "3": "Przekroczyłeś dostępny czas pracy, zatrzymaj się",
+        "4": "Odpoczynek dzienny prawidłowy, mona rozpocząć pracę"
+    },
+    "details": {
+        "driver": {
+            "header": "Kierowca",
+            "firstName": "Imię",
+            "lastName": "Nazwisko",
+            "cardNumber": "Numer karty"
+        },
+        "vehicle": {
+            "header": "Pojazd",
+            "id": "Nr rejestracyjny",
+            "vin": "VIN",
+            "avgFuel": "Średnie spalanie"
+        },
+        "tip": {
+            "header": "Porada",
+            "nextPause": "Początek następnego odpoczynku za {{hours}}h {{minutes}}min"
+        }
     }
 }

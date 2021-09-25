@@ -1,16 +1,12 @@
 <div class="navbar">
-    <h1>{{ appService.pageName + '.header' | translate }}</h1>
+    <h1 class="navbar__header">{{ appService.pageName + '.header' | translate }}</h1>
     <div class="navbar__actions">
         <mat-form-field class="example-form-field" appearance="fill">
             <mat-label>{{ 'navbar.search' | translate }}</mat-label>
-            <input matInput type="text" [(ngModel)]="searchInput">
-            <button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''">
-              <mat-icon>close</mat-icon>
-            </button>
+            <input matInput type="text" (input)="search$.next($event)" (keydown.backspace)="search$.next(null)">
           </mat-form-field>
         <button mat-icon-button color="primary" class="navbar__logout">
             <mat-icon>power_settings_new</mat-icon>
         </button>
     </div>
-
 </div>

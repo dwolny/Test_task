@@ -11,6 +11,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MapModule } from './map/map.module';
 import { fakeBackendProvider } from './_helpers/fake-backend';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,6 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
     MaterialModule,
     LayoutModule,
     MapModule,
+    LeafletModule,
     TranslateModule.forRoot({
       defaultLanguage: 'pl',
       loader: {

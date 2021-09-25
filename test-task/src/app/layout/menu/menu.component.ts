@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+/**
+ * Dumb menu component
+ */
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

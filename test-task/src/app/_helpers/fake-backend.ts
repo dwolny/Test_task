@@ -28,16 +28,75 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       switch (true) {
         // case url.endsWith('/auth/login') && method === 'POST':
         //   return authenticate();
-        // case url.endsWith('/auth/refresh-token') && method === 'POST':
-        //   return refreshToken();
+        case url.endsWith('/config') && method === 'GET':
+          return getConfig();
+        case url.endsWith('/map') && method === 'GET':
+          return getMapData();
         default:
           // pass through any requests not handled above
           return next.handle(request);
       }
     }
 
-    function getDataForTable() {
-      return ok({ });
+    function getConfig() {
+      return ok({
+        lat: 51.8276976,
+        lang: 16.9560484,
+        zoom: 5
+      })
+    }
+
+    function getMapData() {
+      return ok({
+        data: {
+          'SK12345': {
+            lat: 51.8276976,
+            lang: 16.9560484,
+            id: 'SK12345',
+            driver: {
+              firstName: 'Jan',
+              lastName: 'Kowalski',
+              cardNumber: 12343523
+            },
+            vehicle: {
+              vin: 'VF123354543',
+              avgFuel: 20
+            },
+            tip: 0,
+            time: {
+              hours: 3,
+              minutes: 38
+            },
+            nextPause: {
+              hours: 2,
+              minutes: 35
+            }
+          },
+          'SK321321': {
+            lat: 50.8276976,
+            lang: 17.9560484,
+            id: 'SK321321',
+            driver: {
+              firstName: 'Wojciech',
+              lastName: 'Nowak',
+              cardNumber: 523123
+            },
+            vehicle: {
+              vin: 'WOL9342832234',
+              avgFuel: 32
+            },
+            tip: 0,
+            time: {
+              hours: 0,
+              minutes: 22
+            },
+            nextPause: {
+              hours: 6,
+              minutes: 1
+            }
+          }
+        }
+      });
     }
 
     // helper functions

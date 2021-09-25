@@ -1,1 +1,17 @@
-<p>map works!</p>
+
+    <mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <app-vehicle-details [vehicle]="mapService.selectedVehicle" (closeSlideNav)="closeSlideNav()"></app-vehicle-details>
+        </mat-drawer>
+      
+        <div class="example-sidenav-content">
+            <div class="map">
+                <div class="leaflet"
+                leaflet 
+                [leafletOptions]="options"
+                [leafletLayers]="markers">
+                </div>
+            </div>
+        </div>
+      
+      </mat-drawer-container>
