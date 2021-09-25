@@ -8,8 +8,6 @@ import { AppService } from './services/app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'test-task';
-
   constructor(private translateService: TranslateService, public appService: AppService) {
     this.translateService.setDefaultLang('pl');
     this.translateService.use('pl');

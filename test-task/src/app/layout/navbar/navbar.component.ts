@@ -4,6 +4,10 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { AppService } from 'src/app/services/app.service';
 import { MapService } from 'src/app/services/map.service';
 
+/**
+ * Navbar component
+ * Display page title, search input for the map and logout button
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,10 +15,17 @@ import { MapService } from 'src/app/services/map.service';
 })
 export class NavbarComponent implements OnInit {
 
+  /**
+   * Subject for search input
+   */
   public search$ = new Subject<Event | null>();
-  public value = ''
+
   constructor(public appService: AppService, public mapService: MapService) { }
 
+  /**
+   * Handle with input value with debounce time
+   * Set input value as mapService.searchInput as an upper case string
+   */
   ngOnInit(): void {
     this.search$.pipe(
       debounceTime(400),

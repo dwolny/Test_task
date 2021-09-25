@@ -1,3 +1,7 @@
+/**
+ * Vehicle interface
+ * Used to type annotations
+ */
 export interface Vehicle {
     lat: number;
     lang: number;
