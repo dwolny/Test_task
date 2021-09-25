@@ -1,0 +1,10 @@
+.webpage {
+    display: flex;
+    flex-direction: row;
+    &__menu {
+        width: 300px;
+    }
+    &__page {
+        width: calc(100vw - 300px);
+    }
+}

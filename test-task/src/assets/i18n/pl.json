@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "notifications": "Alerty",
+        "files": "Pliki",
+        "drivers": "Kierowcy",
+        "vehicles": "Pojazdy",
+        "reports": "Raporty",
+        "settings": "Ustawienia",
+        "map": "Mapy"
+    },
+    "navbar": {
+        "search": "Wyszukaj pojazd"
+    },
+    "map": {
+        "header": "Mapa"
+    }
+}
