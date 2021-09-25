@@ -56,6 +56,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             firstName: 'Jan',
             lastName: 'Kowalski',
             vin: 'VF123354543',
+            tip: 0,
+            time: {
+              hours: 3,
+              minutes: 38
+            }
           },
           'SK321321': {
             lat: 50.8276976,
@@ -64,6 +69,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             firstName: 'Waldemar',
             lastName: 'Nowak',
             vin: 'WO954391231',
+            tip: 2,
+            time: {
+              hours: 4,
+              stopTime: 9
+            }
           }
         }
       });

@@ -13,5 +13,12 @@
     },
     "map": {
         "header": "Mapa"
+    },
+    "tip": {
+        "0": "Kontynuuj jazdę przez kolejne {{hours}}h {{minutes}}min",
+        "1": "Zatrzymaj się za {{hours}}h na {{minutes}}min",
+        "2": "Zatrzymaj się za {{hours}}h na {{stopTime}}h",
+        "3": "Przekroczyłeś dostępny czas pracy, zatrzymaj się",
+        "4": "Odpoczynek dzienny prawidłowy, mona rozpocząć pracę"
     }
 }

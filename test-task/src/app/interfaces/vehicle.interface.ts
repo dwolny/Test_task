@@ -5,4 +5,10 @@ export interface Vehicle {
     firstName: string;
     lastName: string;
     vin: string;
+    tip: number,
+    time: {
+        hours?: number;
+        minutes?: number;
+        stopTime?: number;
+    }
 }

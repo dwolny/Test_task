@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { TranslateService } from '@ngx-translate/core';
 import { circle, icon, latLng, Layer, marker, polygon, tileLayer } from 'leaflet';
 import { Subscriber, Subscription } from 'rxjs';
 import { Vehicle } from '../interfaces/vehicle.interface';
@@ -23,7 +24,7 @@ export class MapComponent implements AfterViewInit {
 
   private vehicleSearchSubscription!: Subscription;
   @ViewChild('drawer') drawer!: MatDrawer;
-  constructor(public appService: AppService, private mapService: MapService) { }
+  constructor(public appService: AppService, private mapService: MapService, private translateService: TranslateService) { }
 
   ngAfterViewInit(): void {
     this.appService.pageName = 'map';
@@ -52,52 +53,57 @@ export class MapComponent implements AfterViewInit {
   }
 
   addVehicleToLayers(vehicle: Vehicle) {
-    const layer = marker([vehicle.lat, vehicle.lang], {
-      icon: icon({
-        iconSize: [25, 41],
-        iconAnchor: [13, 41],
-        iconUrl: 'assets/plugins/leaflet/images/marker-icon.png'
-      }),
-      title: vehicle.id
+    this.translateService.get(`tip.${vehicle.tip}`, vehicle.time).subscribe((res) => {
+      const layer = marker([vehicle.lat, vehicle.lang], {
+        icon: icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'assets/plugins/leaflet/images/marker-icon.png'
+        }),
+        title: vehicle.id
+      });
+      this.markers.push(layer);
+      this.markers[this.markers.length - 1].bindPopup(this.createPopupDetails(vehicle, res));
     });
-    this.markers.push(layer);
-    this.markers[this.markers.length - 1].bindPopup(this.createPopupDetails(vehicle));
   }
 
   selectVehicle(id: string): void {
     for (let i = 0; i < this.markers.length; i++) {
       const markerCopy: any = this.markers[i];
       if (markerCopy.options.title == id) {
-        this.markers.splice(i, 1);
         const vehicle: Vehicle = this.mapService.vehicles[id];
-        const layer = marker([vehicle.lat, vehicle.lang], {
-          icon: icon({
-            iconSize: [25, 41],
-            iconAnchor: [13, 41],
-            iconUrl: 'assets/plugins/leaflet/images/marker-icon-active.png'
-          }),
-          title: vehicle.id
+        this.translateService.get(`tip.${vehicle.tip}`, vehicle.time).subscribe((res) => {
+          this.markers.splice(i, 1);
+          const layer = marker([vehicle.lat, vehicle.lang], {
+            icon: icon({
+              iconSize: [25, 41],
+              iconAnchor: [13, 41],
+              iconUrl: 'assets/plugins/leaflet/images/marker-icon-active.png'
+            }),
+            title: vehicle.id
+          });
+          this.markers.push(layer);
+          this.markers[this.markers.length - 1].bindPopup(this.createPopupDetails(vehicle, res));
+          if (!this.markers[this.markers.length - 1].isPopupOpen()) {
+            console.warn('otwieramy popup')
+            this.markers[this.markers.length - 1].openPopup();
+          }
         });
-        this.markers.push(layer);
-        this.markers[this.markers.length - 1].bindPopup(this.createPopupDetails(vehicle));
-        if (!this.markers[this.markers.length - 1].isPopupOpen()) {
-          console.warn('otwieramy popup')
-          this.markers[this.markers.length - 1].openPopup();
-          break;
-        }
+
+
       }
     }
   }
 
 
-  createPopupDetails(vehicle: Vehicle): string {
-    return `
+  createPopupDetails(vehicle: Vehicle, res: string): string {
+      return `
       <div class="vehicle-popup">
       <p class="vehicle-popup__item"><b>Imię: </b>${vehicle.firstName}</p>
       <p class="vehicle-popup__item"><b>Nazwisko: </b>${vehicle.lastName}</p>
       <p class="vehicle-popup__item"><b>Nr rejestracyjny: </b>${vehicle.id}</p>
       <hr />
-      <a href="#" data-id="${vehicle.id}" class="get-details">Zobacz szczegóły</a>
+      <a href="#" data-id="${vehicle.id}" class="get-details">${res}</a>
       </div>
     `;
   }
