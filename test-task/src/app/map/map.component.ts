@@ -21,7 +21,7 @@ export class MapComponent implements AfterViewInit {
     zoom: this.appService.config.zoom,
     center: latLng(this.appService.config.lat, this.appService.config.lang)
   };
-
+  private lastId = '';
   private vehicleSearchSubscription!: Subscription;
   @ViewChild('drawer') drawer!: MatDrawer;
   constructor(public appService: AppService, private mapService: MapService, private translateService: TranslateService) { }
@@ -31,7 +31,10 @@ export class MapComponent implements AfterViewInit {
     this.loadData();
     this.vehicleSearchSubscription = this.mapService.searchInput.subscribe((id: string) => {
       if (id in this.mapService.vehicles) {
-        this.selectVehicle(id);
+        this.selectVehicle(id, '-active');
+        this.lastId = id;
+      } else {
+        this.selectVehicle(this.lastId, '');
       }
     })
   }
@@ -67,7 +70,8 @@ export class MapComponent implements AfterViewInit {
     });
   }
 
-  selectVehicle(id: string): void {
+
+  selectVehicle(id: string, suffix: string): void {
     for (let i = 0; i < this.markers.length; i++) {
       const markerCopy: any = this.markers[i];
       if (markerCopy.options.title == id) {
@@ -78,19 +82,17 @@ export class MapComponent implements AfterViewInit {
             icon: icon({
               iconSize: [25, 41],
               iconAnchor: [13, 41],
-              iconUrl: 'assets/plugins/leaflet/images/marker-icon-active.png'
+              iconUrl: `assets/plugins/leaflet/images/marker-icon${suffix}.png`
             }),
             title: vehicle.id
           });
           this.markers.push(layer);
           this.markers[this.markers.length - 1].bindPopup(this.createPopupDetails(vehicle, res));
-          if (!this.markers[this.markers.length - 1].isPopupOpen()) {
-            console.warn('otwieramy popup')
+          if (suffix.length && !this.markers[this.markers.length - 1].isPopupOpen()) {
+            console.warn('otwieramy popup');
             this.markers[this.markers.length - 1].openPopup();
           }
         });
-
-
       }
     }
   }

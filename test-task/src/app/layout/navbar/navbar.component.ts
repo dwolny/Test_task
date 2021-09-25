@@ -12,6 +12,7 @@ import { MapService } from 'src/app/services/map.service';
 export class NavbarComponent implements OnInit {
 
   public search$ = new Subject<Event | null>();
+  public value = ''
   constructor(public appService: AppService, public mapService: MapService) { }
 
   ngOnInit(): void {
@@ -19,12 +20,7 @@ export class NavbarComponent implements OnInit {
       debounceTime(400),
       distinctUntilChanged()
     ).subscribe((e: Event | any) => {
-      if (e == null) {
-        this.mapService.searchInput.next('');
-      }
-      if (e?.target?.value.length) {
-        this.mapService.searchInput.next(e?.target?.value.toUpperCase());
-      }
+      this.mapService.searchInput.next(e?.target?.value.toUpperCase());
     });
   }
 
