@@ -19,6 +19,9 @@ export class NavbarComponent implements OnInit {
       debounceTime(400),
       distinctUntilChanged()
     ).subscribe((e: Event | any) => {
+      if (e == null) {
+        this.mapService.searchInput.next('');
+      }
       if (e?.target?.value.length) {
         this.mapService.searchInput.next(e?.target?.value.toUpperCase());
       }
