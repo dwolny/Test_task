@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { VehicleDetailsComponent } from './vehicle-details.component';
 
@@ -8,7 +9,8 @@ describe('VehicleDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VehicleDetailsComponent ]
+      declarations: [ VehicleDetailsComponent ],
+      imports: [TranslateModule.forRoot()]
     })
     .compileComponents();
   });
