@@ -85,7 +85,7 @@ export class MapComponent implements AfterViewInit {
    * After that, call API via mapService function, after that
    * create vehicle as a layer
    */
-  loadData() {
+  loadData(): void {
     this.markers = [];
     this.mapService.getVehicles().subscribe(({ data }) => {
       this.mapService.vehicles = data;
@@ -101,7 +101,7 @@ export class MapComponent implements AfterViewInit {
    * Create Leaflet's marker from Vehicle
    * @param vehicle {Vehicle} Single vehicle 
    */
-  addVehicleToLayers(vehicle: Vehicle) {
+  addVehicleToLayers(vehicle: Vehicle): void {
     this.translateService.get(`tip.${vehicle.tip}`, vehicle.time).subscribe((res) => {
       const layer = marker([vehicle.lat, vehicle.lang], {
         icon: icon({
