@@ -31,7 +31,7 @@ export class AppService {
    * Load application configuration from API
    * After successfully load, set configLoad as true
    */
-  loadConfig() {
+  loadConfig(): void {
     this.http.get<AppConfig>('/config').subscribe((res) => {
       this.config = res;
       this.configLoaded = true;
